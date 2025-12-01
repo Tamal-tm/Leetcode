@@ -1,9 +1,11 @@
 class Solution(object):
     def minNumberOperations(self, target):
-        ops = target[0]  # build the first element from 0
-        for i in range(1, len(target)):
-            if target[i] > target[i-1]:
-                ops += target[i] - target[i-1]
-        return ops
+        prev = 0
+        res = 0
+        for num in target:
+            if num > prev:
+                res += num-prev
+            prev = num
+        return res
 
             

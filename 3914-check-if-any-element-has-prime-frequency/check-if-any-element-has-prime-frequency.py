@@ -1,28 +1,29 @@
 class Solution(object):
     def checkPrimeFrequency(self, nums):
-        # build frequency map
         seen = {}
-        for i in range(len(nums)):
-            if nums[i] in seen:
-                seen[nums[i]] += 1
+        
+        # build frequency map
+        for x in nums:
+            if x in seen:
+                seen[x] += 1
             else:
-                seen[nums[i]] = 1
+                seen[x] = 1
 
-        # check if ANY frequency is prime
-        for j in seen:                     # j = number
-            freq = seen[j]                # frequency of that number
+        # check if any frequency is prime
+        for val in seen:
+            freq = seen[val]
 
-            if freq < 2:                  # 0 or 1 are NOT prime
+            if freq < 2:       # 0 or 1 → not prime
                 continue
 
-            # check prime
-            is_prime = True
-            for k in range(2, int(freq**0.5) + 1):
-                if freq % k == 0:
-                    is_prime = False
+            # check primality of freq
+            isPrime = True
+            for d in range(2, int(freq**0.5) + 1):
+                if freq % d == 0:
+                    isPrime = False
                     break
-
-            if is_prime:
+            
+            if isPrime:
                 return True
 
         return False

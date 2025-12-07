@@ -1,21 +1,29 @@
 class Solution(object):
     def maximumPrimeDifference(self, nums):
         checkPrime = True
-        mylist=[]
+        mylist = []
+
         for i in range(len(nums)):
-            val=nums[i] 
-            for j in range(2,val):
-                if val % j == 0:
-                    checkPrime = False
-                    break
-            if checkPrime == True and val!=1:
-                pos=i 
-                mylist.append(pos)
-            checkPrime = True
-        
+            val = nums[i]
+
+            # Skip small non-primes
+            if val < 2:
+                checkPrime = False
+            else:
+                # Check divisors only up to sqrt(val)
+                for j in range(2, int(val**0.5) + 1):
+                    if val % j == 0:
+                        checkPrime = False
+                        break
+
+            # If prime, store index
+            if checkPrime:
+                mylist.append(i)
+
+            checkPrime = True  # reset
+
+        # If we have less than 2 primes
         if len(mylist) <= 1:
             return 0
-        else:
-            real_val=max(mylist)-min(mylist)
-            return real_val
         
+        return mylist[-1] - mylist[0]

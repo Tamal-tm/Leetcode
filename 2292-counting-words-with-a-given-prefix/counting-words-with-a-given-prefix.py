@@ -6,9 +6,4 @@ class Solution(object):
                 count +=1
         return (count)
 
-        c = 0
-        n = len(pref)
-        for word in words:
-            if pref in word[0:n]:
-               c+=1
-        return c
+       

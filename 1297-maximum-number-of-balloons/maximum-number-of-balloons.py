@@ -1,16 +1,15 @@
+from collections import defaultdict
 class Solution(object):
     def maxNumberOfBalloons(self, text):
-        seen = {}
+        count = defaultdict(int)
+        ans = 0
+        for i in text:
+            count[i] += 1
 
-        # Count characters
-        for ch in text:
-            seen[ch] = seen.get(ch, 0) + 1
-
-        # Calculate how many "balloon"s we can form
-        return min(
-            seen.get('b', 0),
-            seen.get('a', 0),
-            seen.get('l', 0) // 2,
-            seen.get('o', 0) // 2,
-            seen.get('n', 0)
-        )
+        a = count["a"] // 1 
+        b = count["b"] // 1  
+        l = count["l"] // 2  
+        o = count["o"] // 2  
+        n = count["n"] // 1
+        
+        return min(b, a, l, o, n) 

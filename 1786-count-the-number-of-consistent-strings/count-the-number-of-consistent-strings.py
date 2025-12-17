@@ -4,10 +4,12 @@ class Solution(object):
         count = 0
 
         for word in words:
+            valid = True
             for ch in word:
                 if ch not in allowed_set:
+                    valid = False
                     break
-            else:
+            if valid:
                 count += 1
 
         return count

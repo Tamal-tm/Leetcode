@@ -3,17 +3,17 @@ class Solution(object):
         count = 0
         seen = {}
 
-        # build frequency map for s
+        # count characters of s
         for ch in s:
             if ch in seen:
                 seen[ch] += 1
             else:
                 seen[ch] = 1
 
-        # process t
-        for i in range(len(t)):
-            if t[i] in seen and seen[t[i]] > 0:
-                seen[t[i]] -= 1
+        # try to match characters from t
+        for ch in t:
+            if ch in seen and seen[ch] > 0:
+                seen[ch] -= 1
             else:
                 count += 1
 

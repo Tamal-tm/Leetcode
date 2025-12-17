@@ -1,15 +1,15 @@
 class Solution(object):
     def countConsistentStrings(self, allowed, words):
-        allowed_set = set(allowed)
-        count = 0
+        
+        ans = 0
 
-        for word in words:
-            valid = True
-            for ch in word:
-                if ch not in allowed_set:
-                    valid = False
+        for i in words:
+            able = True
+            for j in i:
+                if j not in allowed:
+                    able = False
                     break
-            if valid:
-                count += 1
-
-        return count
+            if able:
+                ans += 1
+        
+        return ans

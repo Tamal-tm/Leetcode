@@ -4,18 +4,13 @@ class Solution(object):
         res = 0
 
         for i in range(n):
-            seen = {}
-
+            freq = {}
             for j in range(i, n):
                 ch = s[j]
-                if ch in seen:
-                    seen[ch] += 1
-                else:
-                    seen[ch] = 1
+                freq[ch] = freq.get(ch, 0) + 1
 
-                max_freq = max(seen.values())
-                min_freq = min(seen.values())
-
-                res += (max_freq - min_freq)
+                max_val = max(freq.values())
+                min_val = min(freq.values())
+                res += max_val - min_val
 
         return res

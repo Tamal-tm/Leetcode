@@ -2,15 +2,19 @@ class Solution(object):
     def areOccurrencesEqual(self, s):
         seen = {}
 
-        # Count frequency
-        for ch in s:
-            if ch in seen:
-                seen[ch] += 1
+        # count frequency
+        for i in range(len(s)):
+            if s[i] in seen:
+                seen[s[i]] += 1
             else:
-                seen[ch] = 1
+                seen[s[i]] = 1
 
-        # Get all counts
-        values = list(seen.values())
+        # get first frequency as reference
+        first_value = list(seen.values())[0]
 
-        # Check if all counts are same
-        return len(set(values)) == 1
+        # compare all frequencies
+        for ch in seen:
+            if seen[ch] != first_value:
+                return False
+
+        return True

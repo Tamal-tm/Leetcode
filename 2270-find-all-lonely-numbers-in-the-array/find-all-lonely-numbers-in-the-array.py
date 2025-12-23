@@ -1,25 +1,18 @@
 class Solution(object):
     def findLonely(self, nums):
-        nums.sort()
-        mylist=[]
-        if len(nums) == 1:
-            return nums
-        for i in range(len(nums)-1):
-            next_num=nums[i]+1
-            prev_num=nums[i]-1
-            if next_num == nums[i+1]:
-                continue
-            if prev_num == nums[i-1]:
-                continue
-            if nums[i+1] == nums[i] or nums[i-1] == nums[i]:
-                continue
-            else:
-                mylist.append(nums[i])
-        if nums[-1] == nums[-2]:
-            return mylist
-        if nums[i]+1 != nums[-1]:
-            mylist.append(nums[-1])
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        # Frequency map
+        counts = {}
+        for num in nums:
+            counts[num] = counts.get(num, 0) + 1
+        
+        mylist = []
+        for num in counts:
+            # Appears only once and no adjacent numbers exist
+            if counts[num] == 1 and (num + 1) not in counts and (num - 1) not in counts:
+                mylist.append(num)
+        
         return mylist
-            
-        
-        

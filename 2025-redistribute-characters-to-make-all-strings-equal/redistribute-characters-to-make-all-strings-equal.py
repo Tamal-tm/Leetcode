@@ -15,7 +15,7 @@ class Solution(object):
                     count[char] = count[char] + 1
 
         for val in count.values():
-            if val != len(words) and val%len(words) != 0:
+            if val%len(words) != 0:
                 return False
         
         return True

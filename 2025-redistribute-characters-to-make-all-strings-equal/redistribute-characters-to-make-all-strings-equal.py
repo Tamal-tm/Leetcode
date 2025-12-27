@@ -1,14 +1,21 @@
 class Solution(object):
     def makeEqual(self, words):
-        freq = {}
-        n = len(words)
+        """
+        :type words: List[str]
+        :rtype: bool
+        """
+        if len(words) <= 1:
+            return True
+        count = {}
+        for word in words:
+            for char in word:
+                if char not in count:
+                    count[char] = 1
+                else:
+                    count[char] = count[char] + 1
 
-        for w in words:
-            for c in w:
-                freq[c] = freq.get(c, 0) + 1
-
-        for v in freq.values():
-            if v % n != 0:
+        for val in count.values():
+            if val != len(words) and val%len(words) != 0:
                 return False
-
+        
         return True

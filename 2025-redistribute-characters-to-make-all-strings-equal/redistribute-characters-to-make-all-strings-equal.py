@@ -3,12 +3,12 @@ class Solution(object):
         freq = {}
         n = len(words)
 
-        for word in words:
-            for ch in word:
-                freq[ch] = freq.get(ch, 0) + 1
+        for w in words:
+            for c in w:
+                freq[c] = freq.get(c, 0) + 1
 
-        for count in freq.values():
-            if count % n != 0:
+        for v in freq.values():
+            if v % n != 0:
                 return False
 
         return True

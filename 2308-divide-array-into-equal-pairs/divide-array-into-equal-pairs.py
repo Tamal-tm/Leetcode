@@ -1,16 +1,12 @@
 class Solution(object):
     def divideArray(self, nums):
-        seen={}
-        div=len(nums)//2
-        for i in range(len(nums)):
-            if nums[i] in seen:
-                seen[nums[i]] +=1
-            else:
-                seen[nums[i]] =1
-        for key, value in seen.items():
-            if value % 2 == 0:
-                continue
-            else:
+        seen = {}
+
+        for num in nums:
+            seen[num] = seen.get(num, 0) + 1
+
+        for count in seen.values():
+            if count % 2 != 0:
                 return False
-        
+
         return True

@@ -2,18 +2,16 @@ class Solution(object):
     def intersection(self, nums):
         seen = {}
 
-        # Count elements of first array
-        for i in range(len(nums[0])):
-            if nums[0][i] in seen:
-                seen[nums[0][i]] += 1
-            else:
-                seen[nums[0][i]] = 1
+        # Count elements of the first array
+        for x in nums[0]:
+            seen[x] = seen.get(x, 0) + 1
 
-        # Check against remaining arrays
-        for j in range(1, len(nums)):
-            current_set = set(nums[j])
-            for key in list(seen.keys()):
-                if key not in current_set:
-                    del seen[key]
+        # Process remaining arrays
+        for i in range(1, len(nums)):
+            current = {}
+            for x in nums[i]:
+                if x in seen:
+                    current[x] = 1
+            seen = current  # keep only common elements
 
-        return sorted(list(seen.keys()))
+        return sorted(seen.keys())

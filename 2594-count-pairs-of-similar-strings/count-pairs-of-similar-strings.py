@@ -3,8 +3,8 @@ class Solution(object):
         seen = {}
         count = 0
 
-        for w in words:
-            key = frozenset(w)
+        for word in words:
+            key = tuple(sorted(set(word)))
 
             if key in seen:
                 count += seen[key]

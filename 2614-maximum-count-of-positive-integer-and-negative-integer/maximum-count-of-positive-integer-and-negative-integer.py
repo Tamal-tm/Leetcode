@@ -1,9 +1,9 @@
 class Solution(object):
     def maximumCount(self, nums):
-        pos = neg = 0
-        for x in nums:
-            if x > 0:
-                pos += 1
-            elif x < 0:
-                neg += 1
-        return pos if pos > neg else neg
+        n=p=0
+        for i in nums:
+            if i<0:
+                n+=1
+            elif i>0:
+                p+=1
+        return max(n,p)

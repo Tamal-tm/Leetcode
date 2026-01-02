@@ -4,7 +4,7 @@ class Solution(object):
         for i in range(len(nums)):
             if nums[i] >= 1:
                 count_pos +=1 
-            if nums[i] <= -1:
+            elif nums[i] <= -1:
                 count_neg +=1
         return max(count_neg,count_pos)
         

@@ -1,16 +1,17 @@
 class Solution(object):
     def countBalls(self, lowLimit, highLimit):
-        seen = {}
-        ans = 0
+        boxes = {}
 
-        for i in range(lowLimit, highLimit + 1):
+        for num in range(lowLimit, highLimit + 1):
             s = 0
-            n = i
-            while n > 0:
-                s += n % 10
-                n //= 10
+            x = num
+            while x > 0:
+                s += x % 10
+                x //= 10
 
-            seen[s] = seen.get(s, 0) + 1
-            ans = max(ans, seen[s])
+            if s in boxes:
+                boxes[s] += 1
+            else:
+                boxes[s] = 1
 
-        return ans
+        return max(boxes.values())

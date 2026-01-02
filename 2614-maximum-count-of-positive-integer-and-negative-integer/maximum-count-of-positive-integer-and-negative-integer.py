@@ -1,12 +1,9 @@
 class Solution(object):
     def maximumCount(self, nums):
-        count_pos=count_neg=0
-        for i in range(len(nums)):
-            if nums[i] >= 1:
-                count_pos +=1 
-            elif nums[i] <= -1:
-                count_neg +=1
-        return max(count_neg,count_pos)
-        
-                    
-                
+        pos = neg = 0
+        for x in nums:
+            if x > 0:
+                pos += 1
+            elif x < 0:
+                neg += 1
+        return pos if pos > neg else neg

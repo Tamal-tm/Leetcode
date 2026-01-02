@@ -1,15 +1,15 @@
 class Solution(object):
     def mostFrequentEven(self, nums):
-        seen = {}
-        max_freq = 0
-        result = -1
+        freq = {}
+        max_count = 0
+        answer = -1
 
         for n in nums:
             if n % 2 == 0:
-                seen[n] = seen.get(n, 0) + 1
+                freq[n] = freq.get(n, 0) + 1
 
-                if seen[n] > max_freq or (seen[n] == max_freq and n < result):
-                    max_freq = seen[n]
-                    result = n
+                if freq[n] > max_count or (freq[n] == max_count and n < answer):
+                    max_count = freq[n]
+                    answer = n
 
-        return result
+        return answer

@@ -1,11 +1,18 @@
 class Solution(object):
     def countCompleteDayPairs(self, hours):
-        seen={}
-        count=0
-        for i in range(len(hours)):
-            for j in range(i+1, len(hours)):
-                if (hours[i] + hours[j]) % 24 == 0:
-                    count +=1 
+        seen = {}
+        count = 0
+
+        for h in hours:
+            r = h % 24
+            need = (24 - r) % 24
+
+            if need in seen:
+                count += seen[need]
+
+            if r in seen:
+                seen[r] += 1
+            else:
+                seen[r] = 1
+
         return count
-        
-            

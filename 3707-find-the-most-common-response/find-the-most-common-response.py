@@ -1,15 +1,20 @@
 class Solution(object):
     def findCommonResponse(self, responses):
-        mylist=[]
-        seen={}
-        for i in range(len(responses)):
-            val=list(set(responses[i]))
-            for j in range(len(val)):
-                if val[j] in seen:
-                    seen[val[j]] +=1
-                else:
-                    seen[val[j]] =1
-        sorted_items = sorted(seen.items())
-        max_key = max(sorted_items, key=lambda item: item[1])[0]
+        seen = {}
 
-        return (max_key)
+        for r in responses:
+            for x in set(r):   # count once per person
+                if x in seen:
+                    seen[x] += 1
+                else:
+                    seen[x] = 1
+
+        max_freq = max(seen.values())
+        answer = None
+
+        for k in seen:
+            if seen[k] == max_freq:
+                if answer is None or k < answer:
+                    answer = k
+
+        return answer

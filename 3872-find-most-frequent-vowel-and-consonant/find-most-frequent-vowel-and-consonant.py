@@ -1,27 +1,16 @@
 class Solution(object):
     def maxFreqSum(self, s):
-        vowels=('a','e','i','o','u')
-        seen={}
-        max_val=max_val2=0
-        seen2={}
-        for i in range(len(s)):
-            if s[i] in vowels:
-                if s[i] in seen:
-                    seen[s[i]] +=1
-                else:
-                    seen[s[i]] =1
+        vowels = {'a','e','i','o','u'}
+        seen_v = {}
+        seen_c = {}
+
+        for ch in s:
+            if ch in vowels:
+                seen_v[ch] = seen_v.get(ch, 0) + 1
             else:
-                if s[i] in seen2:
-                    seen2[s[i]] +=1
-                else:
-                    seen2[s[i]] =1
-        if seen2.values():
-            max_val2 = max(seen2.values())
-        else:
-            max_val2 = 0
-        if seen.values():
-            max_val = max(seen.values())
-        else:
-            max_val = 0
-        
-        return max_val+max_val2
+                seen_c[ch] = seen_c.get(ch, 0) + 1
+
+        max_v = max(seen_v.values()) if seen_v else 0
+        max_c = max(seen_c.values()) if seen_c else 0
+
+        return max_v + max_c

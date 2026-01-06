@@ -1,12 +1,12 @@
 class Solution(object):
     def transformArray(self, nums):
-        mylist=[]
-        for i in range(len(nums)):
-            if nums[i] % 2 == 0:
-                mylist.append(0)
-        
-        for j in range(len(nums)):
-            if nums[j] % 2 == 1:
-                mylist.append(1)
-        
-        return mylist
+        zeros = 0
+        ones = 0
+
+        for n in nums:
+            if n % 2 == 0:
+                zeros += 1
+            else:
+                ones += 1
+
+        return [0] * zeros + [1] * ones

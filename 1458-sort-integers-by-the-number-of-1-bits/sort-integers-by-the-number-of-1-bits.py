@@ -1,4 +1,8 @@
 class Solution(object):
     def sortByBits(self, arr):
-        arr.sort(key=lambda x: (bin(x).count('1'), x))
-        return arr
+        def key_func(x):
+            return (bin(x).count('1'), x)
+
+        return sorted(arr, key=key_func)
+
+        

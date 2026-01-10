@@ -8,13 +8,13 @@ class Solution(object):
     def hasCycle(self, head):
         
         temp=head
-        mylist=[]
+        myset=set()
         
         while temp is not None:
             
-            if temp in mylist:
+            if temp in myset:
                 return True
-            mylist.append(temp)
+            myset.add(temp)
             temp=temp.next
         
         return False

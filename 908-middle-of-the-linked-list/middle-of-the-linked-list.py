@@ -5,15 +5,10 @@
 #         self.next = next
 class Solution(object): # Brute Force
     def middleNode(self, head):
-        n=0
-        temp=head
-        while temp is not None:
-            n+=1
-            temp=temp.next
+        slow=head
+        fast=head
+        while fast is not None and fast.next is not None:
+            slow=slow.next
+            fast=fast.next.next
         
-        temp=head
-        for _ in range(0,n//2):
-            temp=temp.next
-
-        return temp
-        
+        return slow

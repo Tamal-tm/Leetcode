@@ -5,24 +5,23 @@
 #         self.next = next
 class Solution(object):
     def removeNthFromEnd(self, head, n):
-        temp=head
-        traverse=0
-        count=1
-        val=0
-        while temp is not None:
-            traverse +=1
-            temp=temp.next
+        # Step 1: count total nodes
+        temp = head
+        length = 0
+        while temp:
+            length += 1
+            temp = temp.next
         
-        if n == traverse:
+        # If head needs to be removed
+        if length == n:
             return head.next
         
-        val=traverse-n
-
-        temp=head
-        while temp is not None:
-            if count == val:
-                temp.next=temp.next.next
-            count +=1
-            temp=temp.next
-
+        # Step 2: reach node just before target
+        temp = head
+        for _ in range(length - n - 1):
+            temp = temp.next
+        
+        # Step 3: remove node
+        temp.next = temp.next.next
+        
         return head

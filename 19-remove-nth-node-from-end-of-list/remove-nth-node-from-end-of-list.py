@@ -5,23 +5,23 @@
 #         self.next = next
 class Solution(object):
     def removeNthFromEnd(self, head, n):
-        # Step 1: count total nodes
-        temp = head
-        length = 0
-        while temp:
-            length += 1
-            temp = temp.next
-        
-        # If head needs to be removed
-        if length == n:
+        slow=head
+        fast=head
+
+        for _ in range(n): # Giving headstart by n difference. 
+            fast=fast.next
+
+        if fast==None: # End of the list. 
             return head.next
         
-        # Step 2: reach node just before target
-        temp = head
-        for _ in range(length - n - 1):
-            temp = temp.next
-        
-        # Step 3: remove node
-        temp.next = temp.next.next
+        while fast.next: # Will stop at last element
+            slow=slow.next
+            fast=fast.next
+            
+        slow.next=slow.next.next
         
         return head
+
+
+
+

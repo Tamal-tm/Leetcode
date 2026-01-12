@@ -5,11 +5,11 @@
 #         self.next = next
 class Solution(object):
     def removeElements(self, head, val):
-        # Remove matching nodes at the beginning
+        # Remove all matching nodes at the head
         while head and head.val == val:
             head = head.next
 
-        # Remove matching nodes after head
+        # Now traverse the rest of the list
         curr = head
         while curr and curr.next:
             if curr.next.val == val:

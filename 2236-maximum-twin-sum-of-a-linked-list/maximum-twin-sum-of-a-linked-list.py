@@ -11,30 +11,21 @@
 
 class Solution(object):
     def pairSum(self, head):
-        # Step 1: Find middle
-        slow = head
-        fast = head
-        while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
-
-        # Step 2: Reverse second half
-        prev = None
-        curr = slow
-        while curr:
-            nxt = curr.next
-            curr.next = prev
-            prev = curr
-            curr = nxt
-
-        # Step 3: Compute twin sum
-        left = head
-        right = prev
+        f = head
+        node = None
         maxSum = 0
-
-        while right:
-            maxSum = max(maxSum, left.val + right.val)
-            left = left.next
-            right = right.next
-
+        while f:
+            f = f.next.next
+            temp = head.next
+            head.next = node
+            node = head
+            head = temp
+        while head:
+            maxSum = max(maxSum,node.val + head.val)
+            node = node.next
+            head = head.next
         return maxSum
+        """
+        :type head: Optional[ListNode]
+        :rtype: int
+        """

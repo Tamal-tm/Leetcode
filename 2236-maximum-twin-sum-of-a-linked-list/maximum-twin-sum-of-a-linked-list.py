@@ -5,30 +5,23 @@
 #         self.next = next
 class Solution(object):
     def pairSum(self, head):
-        # 1. Find middle
-        slow = fast = head
-        while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
-
-        # 2. Reverse second half
+        fast = head
         prev = None
-        while slow:
-            nxt = slow.next
-            slow.next = prev
-            prev = slow
-            slow = nxt
 
-        # 3. Compute twin sums
-        left = head
-        right = prev
-        max_sum = 0
+        while fast and fast.next:
+            fast = fast.next.next
+            nxt = head.next
+            head.next = prev
+            prev = head
+            head = nxt
 
-        while right:
-            max_sum = max(max_sum, left.val + right.val)
-            left = left.next
-            right = right.next
+        maxSum = 0
+        while head:
+            maxSum = max(maxSum, prev.val + head.val)
+            prev = prev.next
+            head = head.next
 
-        return max_sum
+        return maxSum
+
 
         

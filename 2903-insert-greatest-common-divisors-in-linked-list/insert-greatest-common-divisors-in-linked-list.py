@@ -8,18 +8,13 @@ class Solution(object):
         slow = head
         fast = head.next
 
-        def gcd(a, b):
+        while fast:
+            a = slow.val
+            b = fast.val
             while b:
                 a, b = b, a % b
-            return a
 
-        while fast:
-            gcd_val = gcd(slow.val, fast.val)
-            new_node = ListNode(gcd_val)
-
-            slow.next = new_node
-            new_node.next = fast
-
+            slow.next = ListNode(a, fast)
             slow = fast
             fast = fast.next
 

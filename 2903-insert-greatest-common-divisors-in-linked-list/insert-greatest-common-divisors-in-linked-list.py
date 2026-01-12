@@ -5,27 +5,22 @@
 #         self.next = next
 class Solution(object):
     def insertGreatestCommonDivisors(self, head):
-        temp=head
-        if temp.next is None:
-            return head
+        slow = head
+        fast = head.next
 
-        def get_gcd(x,y):
-            if x>y:
-                return get_gcd(y,x)
-            else:
-                for i in range(1,x+1):
-                    if x % i == 0 and y % i == 0:
-                        store=i
-                return store
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
 
+        while fast:
+            gcd_val = gcd(slow.val, fast.val)
+            new_node = ListNode(gcd_val)
 
-        while temp.next is not None:
-            next_val=temp.next
-            cd=get_gcd(temp.val,next_val.val)
-            x=ListNode(cd)
-            temp.next=x
-            x.next=next_val
-            temp=next_val
-        
+            slow.next = new_node
+            new_node.next = fast
+
+            slow = fast
+            fast = fast.next
+
         return head
-        

@@ -5,19 +5,33 @@
 #         self.next = next
 class Solution(object):
     def removeNodes(self, head):
-        stack = []
+        # Step 1: Reverse the linked list
+        def reverse(head):
+            prev = None
+            curr = head
+            while curr:
+                nxt = curr.next
+                curr.next = prev
+                prev = curr
+                curr = nxt
+            return prev
+        
+        head = reverse(head)
+        
+        # Step 2: Remove nodes smaller than max so far
+        max_val = 0
+        dummy = ListNode(0)
+        dummy.next = head
+        prev = dummy
         curr = head
-
+        
         while curr:
-            while stack and stack[-1].val < curr.val:
-                stack.pop()
-            stack.append(curr)
+            if curr.val >= max_val:
+                max_val = curr.val
+                prev = curr
+            else:
+                prev.next = curr.next
             curr = curr.next
-
-        # Rebuild the list from stack
-        for i in range(len(stack) - 1):
-            stack[i].next = stack[i + 1]
-        stack[-1].next = None
-
-        return stack[0]
-
+        
+        # Step 3: Reverse again to restore order
+        return reverse(dummy.next)

@@ -5,19 +5,16 @@
 #         self.next = next
 class Solution(object):
     def swapNodes(self, head, k):
-        first = head
+        fast = head
         for _ in range(k - 1):
-            first = first.next
+            fast = fast.next
 
-        kth_from_start = first
+        slow = head
+        first = fast
 
-        second = head
-        while first.next:
-            first = first.next
-            second = second.next
+        while fast.next:
+            fast = fast.next
+            slow = slow.next
 
-        kth_from_end = second
-
-        kth_from_start.val, kth_from_end.val = kth_from_end.val, kth_from_start.val
-
+        first.val, slow.val = slow.val, first.val
         return head

@@ -43,7 +43,5 @@ class Solution(object):
                 next_part = curr.next
                 curr.next = None
                 curr = next_part
-
             result.append(part_head)
-
         return result

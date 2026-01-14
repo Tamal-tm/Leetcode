@@ -5,30 +5,33 @@
 #         self.next = next
 class Solution(object):
     def nodesBetweenCriticalPoints(self, head):
-        prev = head
-        curr = head.next
-        pos = 2
-
-        first = -1
-        last = -1
-        min_dist = float('inf')
-
-        while curr and curr.next:
-            if (curr.val > prev.val and curr.val > curr.next.val) or \
-               (curr.val < prev.val and curr.val < curr.next.val):
-
-                if first == -1:
-                    first = pos
-                else:
-                    min_dist = min(min_dist, pos - last)
-
-                last = pos
-
-            prev = curr
-            curr = curr.next
-            pos += 1
-
-        if first == -1 or first == last:
+        if not head or not head.next or not head.next.next:
             return [-1, -1]
 
-        return [min_dist, last - first]
+        mylist = []
+
+        prev = head
+        temp = head.next
+        count = 2
+
+        while temp.next:
+            if (temp.val > prev.val and temp.val > temp.next.val) or \
+               (temp.val < prev.val and temp.val < temp.next.val):
+                mylist.append(count)
+
+            prev = temp
+            temp = temp.next
+            count += 1
+
+        if len(mylist) < 2:
+            return [-1, -1]
+
+        min_dist = float('inf')
+        for i in range(1, len(mylist)):
+            diff = mylist[i] - mylist[i - 1]
+            if diff < min_dist:
+                min_dist = diff
+
+        max_dist = mylist[-1] - mylist[0]
+
+        return [min_dist, max_dist]

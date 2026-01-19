@@ -5,20 +5,13 @@
 #         self.next = next
 class Solution(object):
     def deleteDuplicates(self, head):
-        dummy=ListNode()
-        curr=dummy
-        temp=head
-        mylist=[]
+        curr = head
+        while curr and curr.next:
+            if curr.val == curr.next.val:
+                curr.next = curr.next.next
+            else:
+                curr = curr.next
+        return head
 
-        while temp is not None:
-            if temp.val not in mylist:
-                mylist.append(temp.val)
-            temp=temp.next
-        
-        for i in range(len(mylist)):
-            curr.next=ListNode(mylist[i])
-            curr=curr.next
-        
-        return dummy.next
 
         

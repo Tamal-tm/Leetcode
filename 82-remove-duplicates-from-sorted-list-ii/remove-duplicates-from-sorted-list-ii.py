@@ -12,13 +12,13 @@ class Solution(object):
 
         while cur:
             if cur.next and cur.val == cur.next.val:
-                val = cur.val
-                while cur and cur.val == val:
+                while cur.next and cur.val == cur.next.val:
                     cur = cur.next
-                prev.next = cur
+                prev.next = cur.next
             else:
-                prev = cur
-                cur = cur.next
+                prev = prev.next
+            cur = cur.next
 
         return dummy.next
+
 

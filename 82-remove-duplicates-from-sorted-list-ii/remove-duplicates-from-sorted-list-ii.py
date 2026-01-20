@@ -11,14 +11,14 @@ class Solution(object):
         cur = head
 
         while cur:
-            if cur.next and cur.val == cur.next.val:
-                while cur.next and cur.val == cur.next.val:
+            nxt = cur.next
+            if nxt and cur.val == nxt.val:
+                val = cur.val
+                while cur and cur.val == val:
                     cur = cur.next
-                prev.next = cur.next
+                prev.next = cur
             else:
-                prev = prev.next
-            cur = cur.next
+                prev = cur
+                cur = nxt
 
         return dummy.next
-
-

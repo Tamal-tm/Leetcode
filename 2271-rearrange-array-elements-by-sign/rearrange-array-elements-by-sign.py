@@ -1,7 +1,6 @@
 class Solution(object):
     def rearrangeArray(self, nums):
-        n = len(nums)
-        res = [0] * n
+        res = [0] * len(nums)
         pos = 0
         neg = 1
         for num in nums:

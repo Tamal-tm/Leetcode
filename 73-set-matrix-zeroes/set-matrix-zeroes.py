@@ -1,22 +1,18 @@
 class Solution(object):
     def setZeroes(self, matrix):
         r = len(matrix)
-        c = len(matrix[0])
+        c = len(matrix[0])   # FIXED
 
-        def mark_infinity(matrix, row, col):
-            for i in range(r):
-                if matrix[i][col] != 0:
-                    matrix[i][col] = float("inf")
-            for j in range(c):
-                if matrix[row][j] != 0:
-                    matrix[row][j] = float("inf")
+        row_track = [0 for _ in range(r)]
+        col_track = [0 for _ in range(c)]
 
         for i in range(r):
             for j in range(c):
                 if matrix[i][j] == 0:
-                    mark_infinity(matrix, i, j)
+                    row_track[i] = -1
+                    col_track[j] = -1
 
         for i in range(r):
             for j in range(c):
-                if matrix[i][j] == float("inf"):
+                if row_track[i] == -1 or col_track[j] == -1:
                     matrix[i][j] = 0

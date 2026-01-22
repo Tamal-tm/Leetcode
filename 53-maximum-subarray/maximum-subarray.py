@@ -1,16 +1,15 @@
 class Solution(object):
     def maxSubArray(self, nums):
-        if len(nums) == 1:
-            return nums[0]
+        op = nums[0]
+        max_op = nums[0]
 
-        op = 0
-        max_op = float('-inf')
-
-        for i in range(len(nums)):
-            op += nums[i]
-            max_op = max(max_op, op)
-
+        for i in range(1, len(nums)):
             if op < 0:
-                op = 0
+                op = nums[i]
+            else:
+                op += nums[i]
+
+            if op > max_op:
+                max_op = op
 
         return max_op

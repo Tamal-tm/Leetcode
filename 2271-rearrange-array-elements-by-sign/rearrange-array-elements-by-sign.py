@@ -1,21 +1,16 @@
 class Solution(object):
     def rearrangeArray(self, nums):
-        mylist = []
-        left_plus = []
-        right_minus = []
+        n = len(nums)
+        res = [0] * n
+        pos = 0
+        neg = 1
 
-        # separate positives and negatives
         for num in nums:
             if num > 0:
-                left_plus.append(num)
+                res[pos] = num
+                pos += 2
             else:
-                right_minus.append(num)
+                res[neg] = num
+                neg += 2
 
-        # merge alternately (problem guarantees equal count)
-        i = 0
-        while i < len(left_plus):
-            mylist.append(left_plus[i])
-            mylist.append(right_minus[i])
-            i += 1
-
-        return mylist
+        return res

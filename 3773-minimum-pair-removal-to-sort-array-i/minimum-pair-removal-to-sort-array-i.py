@@ -6,22 +6,23 @@ class Solution(object):
                     return False
             return True
 
+        arr = nums[:]   # work on a copy
         count = 0
-        arr = nums[:]
 
         while not is_sorted(arr):
             min_sum = float("inf")
             idx = 0
 
+            # find adjacent pair with minimum sum
             for i in range(len(arr) - 1):
-                if arr[i] + arr[i + 1] < min_sum:
-                    min_sum = arr[i] + arr[i + 1]
+                s = arr[i] + arr[i + 1]
+                if s < min_sum:
+                    min_sum = s
                     idx = i
 
-            merged = arr[idx] + arr[idx + 1]
-            arr.pop(idx)
-            arr.pop(idx)
-            arr.insert(idx, merged)
+            # merge the pair
+            arr[idx] = arr[idx] + arr[idx + 1]
+            arr.pop(idx + 1)
 
             count += 1
 

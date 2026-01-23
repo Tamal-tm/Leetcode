@@ -25,5 +25,4 @@ class Solution(object):
             arr.pop(idx + 1)
 
             count += 1
-
         return count

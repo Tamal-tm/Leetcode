@@ -1,11 +1,7 @@
 class Solution(object):
     def reverseBits(self, n):
-        ans = 0
-        for i in range(32):
-            # Extract the current last bit of n and place it in the reversed position
-            ans |= (n & 1) << (31 - i)
-            # Right shift n to process the next bit
+        result = 0
+        for _ in range(32):
+            result = (result << 1) | (n & 1)
             n >>= 1
-        return ans
-
-        
+        return result

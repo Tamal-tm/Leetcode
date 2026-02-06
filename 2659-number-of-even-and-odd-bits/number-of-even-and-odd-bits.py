@@ -3,12 +3,11 @@ class Solution(object):
         even_count = 0
         odd_count = 0
 
-        for i in range(0, 16):
-            if i % 2 == 0:
-                if n & (1 << i):
+        for i in range(16):
+            if n & (1 << i):
+                if i % 2 == 0:
                     even_count += 1
-            else:
-                if n & (1 << i):
+                else:
                     odd_count += 1
 
         return [even_count, odd_count]

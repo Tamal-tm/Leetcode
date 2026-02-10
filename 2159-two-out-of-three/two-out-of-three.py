@@ -1,19 +1,17 @@
 class Solution(object):
     def twoOutOfThree(self, nums1, nums2, nums3):
-        mylist=[]
-        n_nums1=nums1
-        n_nums2=nums2
-        n_nums3=nums3
-        for i in range(len(n_nums1)):
-            if n_nums1[i] in n_nums2 and n_nums1[i] not in mylist:
-                mylist.append(n_nums1[i])
-            elif n_nums1[i] in n_nums3 and n_nums1[i] not in mylist:
-                mylist.append(n_nums1[i])
+        set1 = set(nums1)
+        set2 = set(nums2)
+        set3 = set(nums3)
 
-        for i in range(len(n_nums2)):
-            if n_nums2[i] in n_nums3 and n_nums2[i] not in mylist:
-                mylist.append(n_nums2[i])
-            elif n_nums2[i] in n_nums1 and n_nums2[i] not in mylist:
-                mylist.append(n_nums2[i])
-        
-        return mylist
+        result = []
+
+        for x in set1:
+            if x in set2 or x in set3:
+                result.append(x)
+
+        for x in set2:
+            if x in set3 and x not in result:
+                result.append(x)
+
+        return result

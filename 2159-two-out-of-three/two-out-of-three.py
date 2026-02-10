@@ -13,5 +13,4 @@ class Solution(object):
         for x in set2:
             if x in set3 and x not in result:
                 result.append(x)
-
         return result

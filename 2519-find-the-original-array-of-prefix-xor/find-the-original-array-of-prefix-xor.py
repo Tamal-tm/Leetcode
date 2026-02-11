@@ -1,11 +1,9 @@
 class Solution(object):
     def findArray(self, pref):
-        mylist = []
+        n = len(pref)
+        ans = [pref[0]]
         
-        for i in range(len(pref)):
-            if i == 0:
-                mylist.append(pref[i])
-            else:
-                mylist.append(pref[i] ^ pref[i - 1])
+        for i in range(1, n):
+            ans.append(pref[i] ^ pref[i - 1])
         
-        return mylist
+        return ans

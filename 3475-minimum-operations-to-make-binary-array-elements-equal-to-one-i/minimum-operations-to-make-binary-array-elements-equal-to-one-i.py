@@ -13,5 +13,4 @@ class Solution(object):
         # Check last two elements
         if nums[-1] == 0 or nums[-2] == 0:
             return -1
-        
         return count

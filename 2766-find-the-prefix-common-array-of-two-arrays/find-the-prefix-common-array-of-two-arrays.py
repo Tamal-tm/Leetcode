@@ -1,19 +1,18 @@
 class Solution(object):
     def findThePrefixCommonArray(self, A, B):
-        new_list = []
-        count = 0
-        seen = set()
+        n = len(A)
+        ans = []
+        seen = [0] * (n + 1)
+        common = 0
         
-        for i in range(len(A)):
-            
-            if A[i] in seen:
-                count += 1
-            seen.add(A[i])
-            
-            if B[i] in seen:
-                count += 1
-            seen.add(B[i])
-            
-            new_list.append(count)
-        
-        return new_list
+        for i in range(n):
+            if seen[A[i]] == 0:
+                seen[A[i]] = 1
+            elif seen[A[i]] == 1:
+                common += 1
+            if seen[B[i]] == 0:
+                seen[B[i]] = 1
+            elif seen[B[i]] == 1:
+                common += 1
+            ans.append(common)
+        return ans

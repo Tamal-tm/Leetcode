@@ -1,15 +1,11 @@
 class Solution(object):
     def finalValueAfterOperations(self, operations):
-        x=0
-        for i in range(len(operations)):
-            if '-'in operations[i]:
-                x -=1
-            elif '+' in operations[i]:
-                x +=1
-            else:
-                continue
-        return x
-                
-                
+        x = 0
         
-         
+        for op in operations:
+            if '+' in op:
+                x += 1
+            else:
+                x -= 1
+                
+        return x

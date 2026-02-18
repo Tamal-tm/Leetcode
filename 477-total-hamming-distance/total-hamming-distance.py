@@ -12,5 +12,4 @@ class Solution(object):
                     ones += 1
             
             total += ones * (n - ones)
-        
         return total

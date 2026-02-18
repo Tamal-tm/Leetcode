@@ -1,15 +1,16 @@
 class Solution(object):
     def totalHammingDistance(self, nums):
-        count = 0
         n = len(nums)
+        total = 0
         
         for bit in range(32):
             ones = 0
+            mask = 1 << bit
             
-            for i in range(n):
-                if nums[i] & (1 << bit):
+            for num in nums:
+                if num & mask:
                     ones += 1
             
-            count += ones * (n - ones)
+            total += ones * (n - ones)
         
-        return count
+        return total

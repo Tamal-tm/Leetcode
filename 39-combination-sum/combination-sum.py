@@ -1,28 +1,22 @@
 class Solution(object):
+    def solve(self, index, target, subset, nums, result):
 
-    def solve(self, index, total, subset, nums, target, result):
-
-        if total == target:
+        if target == 0:
             result.append(subset[:])
-            return
-
-        if total > target:
             return
 
         if index >= len(nums):
             return
 
-        # PICK
-        subset.append(nums[index])
-        Sum = total + nums[index]
-        self.solve(index, Sum, subset, nums, target, result)
+        if nums[index] <= target:
+            subset.append(nums[index])
+            self.solve(index, target - nums[index], subset, nums, result)
+            subset.pop()
 
-        # BACKTRACK
-        subset.pop()
+        self.solve(index + 1, target, subset, nums, result)
 
-        # NOT PICK
-        self.solve(index + 1, total, subset, nums, target, result)
+
     def combinationSum(self, candidates, target):
         result = []
-        self.solve(0, 0, [], candidates, target, result)
+        self.solve(0, target, [], candidates, result)
         return result

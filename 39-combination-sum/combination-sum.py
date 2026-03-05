@@ -22,8 +22,6 @@ class Solution(object):
 
         # NOT PICK
         self.solve(index + 1, total, subset, nums, target, result)
-
-
     def combinationSum(self, candidates, target):
         result = []
         self.solve(0, 0, [], candidates, target, result)

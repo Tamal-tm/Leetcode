@@ -14,5 +14,4 @@ class Solution(object):
             
             else:
                 stack.append(int(op))
-        
         return sum(stack)

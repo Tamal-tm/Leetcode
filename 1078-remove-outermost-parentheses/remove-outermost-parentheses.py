@@ -1,14 +1,16 @@
 class Solution(object):
     def removeOuterParentheses(self, s):
-        result = []
+        res = []
         depth = 0
+        
         for ch in s:
-            if ch == "(":
-                if depth > 0:
-                    result.append(ch)
+            if ch == '(':
                 depth += 1
-            else:  # ch == ")"
+                if depth > 1:
+                    res.append(ch)
+            else:
                 depth -= 1
                 if depth > 0:
-                    result.append(ch)
-        return "".join(result)
+                    res.append(ch)
+        
+        return ''.join(res)

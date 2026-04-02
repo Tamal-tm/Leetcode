@@ -12,5 +12,4 @@ class Solution(object):
                 depth -= 1
                 if depth > 0:
                     result.append(ch)
-        
         return "".join(result)

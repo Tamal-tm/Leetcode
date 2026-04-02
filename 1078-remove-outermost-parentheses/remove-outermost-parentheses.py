@@ -2,7 +2,6 @@ class Solution(object):
     def removeOuterParentheses(self, s):
         result = []
         depth = 0
-        
         for ch in s:
             if ch == "(":
                 if depth > 0:

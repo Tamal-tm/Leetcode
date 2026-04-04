@@ -13,5 +13,4 @@ class Solution(object):
             
             stack.append(ch)
             seen.add(ch)
-        
         return "".join(stack)

@@ -40,6 +40,5 @@ class Solution(object):
 
                     # Storing the array in final state
                     st.append(asteroids[i])
-
         # Return the final state of asteroids
         return st

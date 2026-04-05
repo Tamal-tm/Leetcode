@@ -2,11 +2,11 @@ class Solution(object):
     def dailyTemperatures(self, temperatures):
         n = len(temperatures)
         ans = [0] * n
-        stack = []   # stores indices
+        stack = []   # store indices
         
-        for i, t in enumerate(temperatures):
+        for i in range(n):
             
-            while stack and t > temperatures[stack[-1]]:
+            while stack and temperatures[i] > temperatures[stack[-1]]:
                 prev = stack.pop()
                 ans[prev] = i - prev
             
